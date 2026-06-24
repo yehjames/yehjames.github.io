@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Ecom Image AI</title>
+<style>
+  :root { color-scheme: light; }
+  body { max-width: 760px; margin: 40px auto; padding: 0 20px 80px;
+         font: 16px/1.7 -apple-system, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+         color: #1a1a1a; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  h2 { font-size: 20px; margin-top: 36px; border-bottom: 1px solid #e5e5e5; padding-bottom: 6px; }
+  .meta { color: #666; font-size: 14px; }
+  code { background: #f3f3f3; padding: 1px 5px; border-radius: 4px; font-size: 14px; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .en { color: #444; }
+  hr { border: none; border-top: 1px solid #e5e5e5; margin: 40px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 14px; }
+  th, td { border: 1px solid #e0e0e0; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #fafafa; }
+</style>
+</head>
+<body>
+
+<h1>隱私權政策 · Privacy Policy</h1>
+<p class="meta">Ecom Image AI（Chrome 擴充功能）· 生效日 / Effective date: 2026-06-24</p>
+
+<p>本擴充功能在設計上<strong>不收集、不上傳、不販售你的個人資料</strong>。我們<strong>沒有任何後端伺服器</strong>。本頁說明本擴充功能會處理哪些資料、存在哪裡、以及在什麼情況下會傳到哪裡。</p>
+<p class="en">This extension is built to <strong>not collect, upload, or sell your personal data</strong>. We operate <strong>no backend server of our own</strong>. This page explains what data the extension handles, where it is stored, and when/where it is transmitted.</p>
+
+<h2>1. 我們存什麼，存在哪裡 · What we store, and where</h2>
+<p>以下資料只存在你自己瀏覽器的 <code>chrome.storage.local</code>（僅限本機，<strong>不同步</strong>到你的 Google 帳號、<strong>不</strong>傳給我們）：</p>
+<table>
+  <tr><th>項目 Item</th><th>說明 Description</th></tr>
+  <tr><td>API 金鑰 (OpenAI / Gemini)</td><td>你自行輸入、用於呼叫 AI 影像服務的金鑰。只存本機。<span class="en">Your own API keys for the AI image services. Stored locally only.</span></td></tr>
+  <tr><td>偏好設定 Settings</td><td>所選模型、解析度、品質、平行數、介面語言、主題。<span class="en">Selected model, resolution, quality, concurrency, UI language, theme.</span></td></tr>
+  <tr><td>用量紀錄 Usage log</td><td>本機的生成次數與花費估算（時間、供應商、估計成本），供你自己查看。<strong>不會傳出</strong>。<span class="en">Local generation counts &amp; cost estimates, for your own reference. Never transmitted.</span></td></tr>
+</table>
+
+<h2>2. 我們從商品頁讀什麼 · What we read from product pages</h2>
+<p>當你在受支援的商品頁（1688.com、Alibaba.com、Taobao、Tmall）開啟面板時，內容腳本會從<strong>該頁面本身</strong>讀取商品素材：商品標題、主圖／SKU 圖／詳情圖、商品影片網址。這些只用來顯示選圖面板、下載、或（經你操作後）送去 AI 處理。<strong>不會讀取</strong>你的 cookie、登入憑證、瀏覽紀錄或剪貼簿。</p>
+<p class="en">When you open the panel on a supported product page (1688.com, Alibaba.com, Taobao, Tmall), the content script reads product media from <strong>that page</strong>: title, hero/SKU/detail images, and product video URL. These are used only to show the picker, download, or — after your action — send to AI. It does <strong>not</strong> read your cookies, credentials, browsing history, or clipboard.</p>
+
+<h2>3. 什麼情況下資料會離開瀏覽器 · When data leaves your browser</h2>
+<ul>
+  <li><strong>AI 生成時</strong>：你選定的圖片與提示詞，會<strong>直接從你的瀏覽器</strong>傳送到你選擇的 AI 供應商——OpenAI（<code>api.openai.com</code>）或 Google（<code>generativelanguage.googleapis.com</code>）——並以你自己的 API 金鑰驗證。這些資料<strong>不會</strong>經過我們的任何伺服器。其用途受該供應商自己的隱私政策規範。
+    <div class="en">During AI generation, the images and prompts you choose are sent <strong>directly from your browser</strong> to the provider you pick — OpenAI (<code>api.openai.com</code>) or Google (<code>generativelanguage.googleapis.com</code>) — authenticated with your own key. This data does <strong>not</strong> pass through any server of ours, and is governed by that provider's own privacy policy.</div>
+  </li>
+  <li><strong>下載時</strong>：商品圖片與影片透過瀏覽器的下載功能存到你的電腦。
+    <div class="en">When downloading, product images/videos are saved to your computer via the browser's download API.</div>
+  </li>
+  <li><strong>抓取詳情圖時</strong>：擴充功能會向商品圖片 CDN（<code>*.alicdn.com</code>、<code>itemcdn.tmall.com</code> 等）請求商品的詳情圖。
+    <div class="en">To fetch detail images, the extension requests them from the product image CDNs (<code>*.alicdn.com</code>, <code>itemcdn.tmall.com</code>, etc.).</div>
+  </li>
+</ul>
+
+<h2>4. 我們不做的事 · What we do NOT do</h2>
+<ul>
+  <li>沒有分析工具、追蹤碼、廣告或遙測（無 Google Analytics / Sentry / 任何第三方追蹤）。<span class="en">No analytics, tracking, ads, or telemetry.</span></li>
+  <li>不收集個人身分資訊、不讀取瀏覽紀錄、不存取 cookie。<span class="en">No PII collection, no browsing history, no cookie access.</span></li>
+  <li>沒有自己的伺服器，因此沒有任何資料會被我們儲存。<span class="en">No server of our own, so no data is ever stored by us.</span></li>
+</ul>
+
+<h2>5. 你的控制權 · Your control</h2>
+<p>你可以隨時在設定頁清除 API 金鑰，或在 <code>chrome://extensions</code> 移除本擴充功能——這會一併刪除所有本機儲存的資料。<span class="en">You can clear your API keys in settings at any time, or remove the extension from <code>chrome://extensions</code>, which deletes all locally stored data.</span></p>
+
+<h2>6. 聯絡方式 · Contact</h2>
+<p>問題請開 issue：<a href="https://github.com/yehjames/yehjames.github.io/issues">GitHub Issues</a>。</p>
+
+<hr>
+<p class="meta">本政策如有更新，會更新本頁的生效日。This policy's effective date will be updated here if it changes.</p>
+
+</body>
+</html>
