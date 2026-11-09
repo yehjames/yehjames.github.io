@@ -69,7 +69,7 @@ ul,ol{padding-left:20px}
 <body><button aria-label="目錄" id="navbtn">☰</button><div class="layout"><nav><h2>導讀</h2><ul><li><a href="#quick">01 快速上手：重點總整理</a></li></ul><h2>基礎</h2><ul><li><a href="#core">02 入門與核心循環</a></li><li><a href="#careers">03 職業路線與生產</a></li></ul><h2>專題</h2><ul><li><a href="#money">04 賺錢方式最佳化流程</a></li><li><a href="#farm">05 養育・水耕・賣水最佳化</a></li><li><a href="#cage-settings">　└ 屠宰機最佳設定（各尺寸＋證明）</a></li><li><a href="#guns">06 槍械製作技巧</a></li><li><a href="#butcher">07 如何對抗屠夫</a></li><li><a href="#qa">08 常見追問：賺錢・水耕・治安聲望・淨水・純水・餵魚・派系聲望</a></li></ul><h2>後期</h2><ul><li><a href="#endgame">09 派系・結局・成就</a></li><li><a href="#npcs">10 特殊人物支線：倫警官・喬治奧・埃莉諾・塞爾皮科・盧</a></li><li><a href="#repperks">11 派系聲望福利表・打折倍率・冰箱・房東</a></li></ul><h2>深入</h2><ul><li><a href="#modules">12 模組系統完整 Cheat Sheet：性能・效率・品質</a></li><li><a href="#mechanics">13 遊戲機制解析（反組譯）</a></li><li><a href="#data">14 資料表</a></li></ul></nav><main>
 <h1>深空當鋪：可能是偷的　完整攻略</h1>
 <p class="subtitle">Probably Stolen – Cyberpunk Shopkeeper Sim｜網路資料交叉查證＋遊戲程式反編譯解析</p>
-<p class="meta">建立：2026-11-07｜遊戲版本：Steam 2026-11-02 build（Assembly-CSharp.dll 日期）｜來源分級：🟢 程式碼／官方　🟡 ≥3 玩家來源同向　🔴 單一來源｜最後更新：2026-11-09（新增盧的支線、老鼠朊病毒事件、各尺寸籠子／魚缸的最佳收割設定與證明、DNA 編輯器公式、吸引力門檻）</p>
+<p class="meta">建立：2026-11-07｜遊戲版本：Steam 2026-11-02 build（Assembly-CSharp.dll 日期）｜來源分級：🟢 程式碼／官方　🟡 ≥3 玩家來源同向　🔴 單一來源｜最後更新：2026-11-09，含 Rev13 hotfix（新增盧的支線、老鼠朊病毒事件、各尺寸籠子／魚缸的最佳收割設定與證明、DNA 編輯器公式、吸引力門檻）</p>
 
 <section id="quick"><h2><span class="n">01</span>快速上手：重點總整理</h2>
 <div class="lede">
@@ -2043,7 +2043,7 @@ StoreReputation.ModSecReputation(-15);</code></pre>
 <ul>
 <li>開槍後第 3 天早上，前檯出現一個<b>空的保險櫃</b>，要裝滿<b>勒索金額的一半</b>（一般難度 375）。價值＝櫃內所有東西議價後價值的總和。🟢 <code>:44-47, 511-519</code></li>
 <li>裝滿後<b>打烊時直接放在前檯上</b>，不要裝在袋子裡。盧夜裡會一律收走，<b>價值不夠隔天早上就爆</b>，所以還沒裝滿就先拖回倉庫。期限 3 晚。🟡 審查員引用 <code>:540-566, 581-588</code></li>
-<li>放好的那晚<b>睡店裡的床鋪，不要出門</b>：出門會先清空前檯，保險櫃就沒了。🟡 審查員引用 <code>EmporiumEntry.cs:853</code></li>
+<li><b>11-09 更新（Rev13）後</b>：出門那一刻遊戲就會先結算保險櫃，價值夠就結清，不夠就隔天早上爆；舊版「出門會清空前檯、保險櫃被銷毀」的 bug 已修。保險櫃如果不見了，遊戲會<b>補發一次並重新給 3 晚</b>。🟢 <code>LouOperativeHelper.cs:546-584, 600-606</code>（11-09 版）</li>
 <li><b>特工給的發報器</b>：放進保險櫃，盧來收的時候就會被抓，不用裝滿，也不會爆。發報器一開始也放在前檯，記得當天收進倉庫。🟡 審查員引用 <code>LouOperativeHelper.cs:444-460, 551</code></li>
 </ul>
 </section><section id="repperks"><h2><span class="n">11</span>派系聲望福利表・打折倍率・冰箱・房東</h2>
