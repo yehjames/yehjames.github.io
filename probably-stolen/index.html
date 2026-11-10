@@ -66,7 +66,7 @@ ul,ol{padding-left:20px}
 #navbtn{padding:6px 12px;background:rgba(28,33,40,.92);backdrop-filter:blur(6px)}
 }
 </style></head>
-<body><button aria-label="目錄" id="navbtn">☰</button><div class="layout"><nav><h2>導讀</h2><ul><li><a href="#quick">01 快速上手：重點總整理</a></li></ul><h2>基礎</h2><ul><li><a href="#core">02 入門與核心循環</a></li><li><a href="#careers">03 職業路線與生產</a></li></ul><h2>專題</h2><ul><li><a href="#money">04 賺錢方式最佳化流程</a></li><li><a href="#farm">05 養育・水耕・賣水最佳化</a></li><li><a href="#cage-settings">　└ 屠宰機最佳設定（各尺寸＋證明）</a></li><li><a href="#guns">06 槍械製作技巧</a></li><li><a href="#butcher">07 如何對抗屠夫</a></li><li><a href="#qa">08 常見追問：賺錢・水耕・治安聲望・淨水・純水・餵魚・派系聲望</a></li></ul><h2>後期</h2><ul><li><a href="#endgame">09 派系・結局・成就</a></li><li><a href="#npcs">10 特殊人物支線：倫警官・喬治奧・埃莉諾・塞爾皮科・盧</a></li><li><a href="#repperks">11 派系聲望福利表・打折倍率・冰箱・房東</a></li></ul><h2>深入</h2><ul><li><a href="#modules">12 模組系統完整 Cheat Sheet：性能・效率・品質</a></li><li><a href="#mechanics">13 遊戲機制解析（反組譯）</a></li><li><a href="#data">14 資料表</a></li></ul></nav><main>
+<body><button aria-label="目錄" id="navbtn">☰</button><div class="layout"><nav><h2>導讀</h2><ul><li><a href="#quick">01 快速上手：重點總整理</a></li></ul><h2>基礎</h2><ul><li><a href="#core">02 入門與核心循環</a></li><li><a href="#careers">03 職業路線與生產</a></li></ul><h2>專題</h2><ul><li><a href="#money">04 賺錢方式最佳化流程</a></li><li><a href="#farm">05 養育・水耕・賣水最佳化</a></li><li><a href="#cage-settings">　└ 屠宰機最佳設定（各尺寸＋證明）</a></li><li><a href="#guns">06 槍械製作技巧</a></li><li><a href="#butcher">07 如何對抗屠夫</a></li><li><a href="#qa">08 常見追問：賺錢・水耕・治安聲望・淨水・純水・餵魚・派系聲望</a></li><li><a href="#sec-rep">　└ 快速提升治安部聲望</a></li></ul><h2>後期</h2><ul><li><a href="#endgame">09 派系・結局・成就</a></li><li><a href="#npcs">10 特殊人物支線：倫警官・喬治奧・埃莉諾・塞爾皮科・盧</a></li><li><a href="#repperks">11 派系聲望福利表・打折倍率・冰箱・房東</a></li></ul><h2>深入</h2><ul><li><a href="#modules">12 模組系統完整 Cheat Sheet：性能・效率・品質</a></li><li><a href="#mechanics">13 遊戲機制解析（反組譯）</a></li><li><a href="#data">14 資料表</a></li></ul></nav><main>
 <h1>深空當鋪：可能是偷的　完整攻略</h1>
 <p class="subtitle">Probably Stolen – Cyberpunk Shopkeeper Sim｜網路資料交叉查證＋遊戲程式反編譯解析</p>
 <p class="meta">建立：2026-11-07｜遊戲版本：Steam 2026-11-02 build（Assembly-CSharp.dll 日期）｜來源分級：🟢 程式碼／官方　🟡 ≥3 玩家來源同向　🔴 單一來源｜最後更新：2026-11-09，含 Rev13 hotfix（新增盧的支線、老鼠朊病毒事件、各尺寸籠子／魚缸的最佳收割設定與證明、DNA 編輯器公式、吸引力門檻）</p>
@@ -881,7 +881,7 @@ ul,ol{padding-left:20px}
 <ul>
 <li><b>治安部徵用官</b>：治安聲望 ≥ 0（徵用令），而且天數 &gt; 7。每逢週四來，所以第一次是第 11 天，之後是第 18、25、32… 天。🟢</li>
 <li><b>治安部盈餘商</b>（顯示名稱也叫徵用官）：治安聲望 ≥ 20（治安部盈餘），每逢週三來，第 3 天就可能來。槍匠開局治安 +25、「模範公民」+30，所以這兩種開局第 3 天就會遇到。🟢</li>
-<li>隨機客人永遠不會出現治安部的人，所以這兩位就是治安部唯二的固定交易對象。🟢（第 7 章）</li>
+<li>這兩位是治安部唯二的固定交易對象。另外有一位<b>巡邏警員</b>整局只會隨機出現一次（預算 75，買點心、香菸、咖啡因錠），見第 08 章 Q4。🟢（StoreClientListMinor.cs:12、263-292）</li>
 </ul>
 <h4>徵用官（買家）</h4>
 <ul>
@@ -1683,19 +1683,79 @@ StoreReputation.ModSecReputation(-15);</code></pre>
 <li><b>沒水或沒電：</b>那晚不會長，不扣健康值，但收成會延後。</li>
 </ul>
 <p>做法：只用淨水器淨化過的 HQ（優質水） 水，投營養片（5 元，用很久），每晚確認水箱和電池。</p>
-<h3>Q4. 怎麼快速提升治安部好感？</h3>
-<div class="tw"><table><thead><tr><th>方法</th><th>治安聲望</th><th>備註</th></tr></thead><tbody>
-<tr><td>開局選「模範市民」天賦</td><td>+30</td><td>之後檢舉獎勵的現金和聲望都 ×1.5</td></tr>
-<tr><td>檢舉通緝犯</td><td>+5</td><td>另有現金獎勵</td></tr>
-<tr><td>檢舉賣贓物／違禁品的客人</td><td>＋該客人的違禁等級</td><td>現金 = 估價 + 50；客人所屬派系會被扣分，從 −8 起每次多扣 2，最多 −20</td></tr>
-<tr><td>射殺強化人（Aug，改造人）</td><td>+8</td><td>下層、黑市、革命軍各 +2，現金 100–250</td></tr>
-<tr><td>治安部委託「證物箱」</td><td>+10</td><td>另給 200 現金</td></tr>
-<tr><td>被臨檢時店裡乾淨</td><td>+3</td><td>沒有違禁品就是加分機會</td></tr>
-<tr><td>警報器裝警報傳輸模組，切到治安部</td><td>每晚 +1</td><td>掛著就會一直累積</td></tr>
-<tr><td>賣出的水或化學品，實際品質比標示好</td><td>+3</td><td>加給該客人所屬的派系</td></tr>
-<tr><td>Serpico（塞爾皮科） 劇情走治安部結局</td><td>+12</td><td></td></tr>
+<h3 id="sec-rep">Q4. 怎麼快速提升治安部好感？（反組譯完整版）</h3>
+<h4>TL;DR：從 −32 最快衝上來</h4>
+<div class="tw"><table><thead><tr><th>階段</th><th>做法</th><th>預估天數</th></tr></thead><tbody>
+<tr><td><b>−32 → −19（停止被破壞）</b></td><td>警報器裝<span class="kw">警報傳輸模組</span>（每晚 +1）＋檢舉「賣違禁品」的客人（+1～4）＋檢舉通緝犯（+5）＋臨檢時店裡乾淨（+3）。<b>千萬別掉到 −40</b>，掉到那裡檢舉鈕會失效。</td><td>約 4～8 天 🟡 推論</td></tr>
+<tr><td><b>−19 → 0</b></td><td>同上；巡邏警員（一次性小客人）來時打 75% 折，再用「超過預算照賣」，一次可拿 +10 以上。</td><td>約 7～14 天 🟡 推論</td></tr>
+<tr><td><b>0 → 20</b></td><td>第一個週四（第 11 天後）徵用官上門：打 <b>75% 折</b>，大量賣食物和醫療用品，最後用「超過預算照賣」收尾。</td><td>約 1 個週四（≤7 天） 🟡 推論</td></tr>
+<tr><td><b>20 → 50 → 80</b></td><td>每週三向盈餘商「多給 75%」買貨，週四照上面的方法對徵用官大量讓利；傳輸模組每週再補 +7。</td><td>每段約 1～2 週 🟡 推論</td></tr>
 </tbody></table></div>
-<p class="sub">所有聲望增加都會乘上難度倍率：×1.5／×1／×0.75／×0.5（推論為輕鬆／普通／困難／挑戰）。解鎖上層的請願（UL_PETITION，聯名檢舉）特權後，治安聲望被扣時會扣兩倍。🟢（<code>PlayerStore.cs:3350–3466</code>、<code>ContrabandHelper.cs:229–261</code>、<code>AugHelper.cs:59</code>、<code>StoreReputation.cs:88–110</code>）</p>
+<p class="sub">核心公式：交易聲望 ＝ 議價前價值 × m ÷ 400（StoreReputation.cs:228、253）。徵用官 m 起點是 2（StoreClientList.cs:3529），打 75% 折再 +2.9（BargainUIManager.cs:1165–1169、1399），超過預算的那件再 +1（StoreReputation.cs:224–227）。</p>
+
+<h4>先搞懂規則</h4>
+<div class="tw"><table><thead><tr><th>規則</th><th>內容</th><th>來源</th></tr></thead><tbody>
+<tr><td>被破壞店面</td><td>任一派系 ≤ −20，且距上次被破壞 ≥ 2 天時，每晚有「|聲望| ÷ 5」% 的機率被破壞。−32 是 6%（整數除法）。🟢</td><td>PlayerStore.cs:2162–2172</td></tr>
+<tr><td>聲望怎麼取整數</td><td>顯示和門檻用 <span class="kw">(int)</span>，會無條件捨去小數。例如 −19.6 算 −19，所以只要實際值高於 −20 就不會被破壞。🟢</td><td>StoreReputation.cs:72–75</td></tr>
+<tr><td>上下限</td><td>聲望最低 −200，最高 200。🟢</td><td>StoreReputation.cs:120</td></tr>
+<tr><td>難度倍率</td><td>加分：Cozy ×1.5、Normal ×1、Hard ×0.75、Challenge ×0.5。扣分：×0.5／×1／×1.25／×2。🟢</td><td>Difficulty.cs:234–235、278–279、322–323、366–367、386–389；套用在 StoreReputation.cs:106–113</td></tr>
+<tr><td>上層請願</td><td>上層聲望 ≤ −60 時，治安聲望的扣分會變成 2 倍。🟢</td><td>StoreReputation.cs:102–105；StoreReputationPerk.cs:630</td></tr>
+<tr><td>每日自動回歸</td><td>沒有。每天只處理派系的行動冷卻和影響力，聲望值完全不動。🟢</td><td>StoreStation.cs:80–91</td></tr>
+<tr><td>−20 監視名單</td><td>證據累積速度 ×1.2。到 −60 變成 ×1.5。🟢</td><td>SecData.cs:192–199；StoreReputationPerk.cs:375–376、386–387</td></tr>
+<tr><td>−40 警報被無視</td><td>按檢舉鈕不會叫來治安部，這時所有檢舉類加分都失效。🟢</td><td>StoreReputationPerk.cs:364–365；StoreSecButton.cs:71–74</td></tr>
+<tr><td>槍證吊銷</td><td>治安 &lt; 0 時，有 I 級證就會被吊銷；II 級的門檻是 &lt; 30，III 級是 &lt; 60。治安 &lt; 0 且持有 I 級證時，霰彈槍也會被收走。🟢</td><td>StoreClientManager.cs:961–972；Shotgun.cs:146–152</td></tr>
+</tbody></table></div>
+
+<h4>所有加治安聲望的方法</h4>
+<div class="tw"><table><thead><tr><th>方式</th><th>條件</th><th>每次聲望</th><th>頻率</th><th>成本</th><th>來源</th></tr></thead><tbody>
+<tr><td>跟治安部徵用官交易（買家）</td><td>治安 ≥ 0、天數 &gt; 7、週四。只買 FOOD（食物）和 MEDICAL（醫療用品）。🟢</td><td>價值 × m ÷ 400；m 起點 2。例如不打折賣 300 是 +1.5 🟢</td><td>每週一次（第 11、18、25… 天）🟢</td><td>不打折就沒有成本</td><td>StoreClientManager.cs:1285；StoreReputationPerk.cs:353–354；StoreClientList.cs:3523–3546（預算 300 在 :3533）</td></tr>
+<tr><td>　└ 對他打折</td><td>每位客人只能讓利一次。打 p% 折時，預算會增加「剩餘預算 × p% × 2」。🟢</td><td>m 再加 0.65／1.2／2／2.9（10／25／50／75%）。打 75% 折時，預算 300 會變 750，最多可賣價值 3,000 的貨，拿 +36.75 🟡（照公式算）</td><td>每週一次</td><td>讓出售價的 p%。75% 折時，每點聲望約 61 元貨值 🟡</td><td>BargainUIManager.cs:115、667–670、768–790、1146–1171、1385–1400</td></tr>
+<tr><td>　└ 超過預算照賣</td><td>放上一件議價後價值大於剩餘預算的商品，按確認照賣，只收剩下的預算。🟢</td><td>這件的 m 再 +1，而且聲望照「全額價值」算。75% 折時這件 m 是 5.9 🟢</td><td>每件都算</td><td>預算用完後，每件等於送出去：約 68 元貨值換 1 點（75% 折）或 133 元換 1 點（不打折）🟡。預算為 0 時還能不能照賣，<b>未確認</b></td><td>StoreReputation.cs:224–228；PlayerStore.cs:2740–2759、2816–2818</td></tr>
+<tr><td>跟治安部盈餘商交易（賣家）</td><td>治安 ≥ 20、週三。🟢</td><td>m 起點 2。向他買貨時「多給」可再加 0.65～2.9 🟢</td><td>每週一次 🟢</td><td>多付的錢。商品數量受槍證等級影響，量不大 🟡</td><td>StoreClientManager.cs:1281；StoreReputationPerk.cs:441–442；StoreClientList.cs:3332–3341</td></tr>
+<tr><td>巡邏警員（治安部一般客人）</td><td><b>不限聲望</b>。一次性的隨機小客人，出現過就移出名單。預算 75，m = 1，買 TREAT（點心）、香菸、咖啡因錠。🟢</td><td>打 75% 折＋超過預算照賣，m 可到 4.9。價值 1,000 的貨約 +12 🟡</td><td>整局 1 次 🟢</td><td>讓利</td><td>StoreClientListMinor.cs:12、263–292；StoreClientManager.cs:1562–1563</td></tr>
+<tr><td>檢舉通緝犯（含盧 Lou）</td><td>按檢舉鈕，或開槍擊倒通緝犯。聲望 &gt; −40 才叫得到人。🟢</td><td>+5（模範公民 ×1.5，前科犯 ×0.75）🟢</td><td>每張通緝令一次；盧的賞金是 1,500 元，而且不扣黑市聲望 🟢</td><td>無，還會拿賞金</td><td>PlayerStore.cs:3388–3394、3417–3424；StartingPerkContent.cs:446–462；StoreClientListWanted.cs:506–508</td></tr>
+<tr><td>檢舉在賣違禁品的客人</td><td>客人櫃台上有違禁品。只有贓物的話是 +0。🟢</td><td>+櫃台上最高的違禁等級（1～4）。用不帶等級的方式初始化的違禁品，整數等級可能是 0，<b>未確認</b>是哪些物品 🟢／未確認</td><td>有這種客人就能做（出現頻率<b>未確認</b>）</td><td>無；現金獎勵另計。但客人所屬派系會從 −8 開始扣，每次多扣 2，最多 −20 🟢</td><td>PlayerStore.cs:3565–3583；ContrabandHelper.cs:24–32、45–91、426–438；StoreReputation.cs:46、466–481</td></tr>
+<tr><td>臨檢時店裡乾淨</td><td>走私罪總額 ≥ 50 才會有檢查員。不能有藏起來的東西，不能是靠運氣躲過，不能是假檢查員，也不能是展示櫃引起的臨檢。🟢</td><td>+3 🟢</td><td>每 3～5 天一次（走私罪越高越頻繁）🟢</td><td>無</td><td>ContrabandHelper.cs:245–252；StoreClientManager.cs:644–695、717–741</td></tr>
+<tr><td>警報器裝警報傳輸模組</td><td>保全警報器有電、模組指向治安部（預設就是）、保險服務已解鎖；有黑市「無法投保」時無效。發明家有 20% 機率在賣這個模組，基礎價 100。🟢</td><td>每晚 +1 🟢</td><td><b>每晚</b>，不限聲望 🟢</td><td>買模組＋警報器用電</td><td>MachineAlarm.cs:236–239；PlayerStore.cs:2061–2074；ModuleDirectory.cs:827–837；StoreClientList.cs:746–749；StoreService.cs:242</td></tr>
+<tr><td>開槍擊倒 Aug（改造人）</td><td>要有霰彈槍。治安 &lt; 0 時可能已經被收走（見上表）。🟢</td><td>+8（下層、黑市、革命軍各 +2，現金 100～250）🟢</td><td>Aug 出現時</td><td>無</td><td>AugHelper.cs:59–75</td></tr>
+<tr><td>治安部委託「證物箱」</td><td>只在第 7 天的「證物室失竊」事件出現（跳過教學就沒有）。🟢</td><td>+10，現金 400 🟢</td><td><b>整局 1 次</b>，現在大概已經錯過 🟡</td><td>交出證物箱</td><td>StoreRequestList.cs:156–169、294–298；StoreEventManager.cs:338–341；StoreEventActionDict.cs:36–41</td></tr>
+<tr><td>倫警官退休派對委託</td><td>交 1 份生肉，期限 14 天。觸發條件是「天數 + 市集解鎖日 == 31」。🟢</td><td>+2，現金 278 🟢</td><td>整局 1 次</td><td>1 份生肉</td><td>StoreRequestList.cs:466–480；StoreRequest.cs:156–159</td></tr>
+<tr><td>Serpico 劇情走治安部結局</td><td>劇情選擇（分支條件<b>未確認</b>）</td><td>+12 🟢</td><td>整局 1 次</td><td>—</td><td>SerpicoStoryline.cs:434–439</td></tr>
+<tr><td>賣給治安部客人的水或化學品，實際品質比標示好</td><td>當下的客人是治安部的人</td><td>+3 🟢</td><td>少見</td><td>—</td><td>WaterFeatureHelper.cs:489；ChemicalProductHelper.cs:172</td></tr>
+<tr><td>跟治安部客人說「這是真菸／真郵票」並驗證成功</td><td>當下的客人是治安部的人</td><td>+2 🟢</td><td>少見</td><td>—</td><td>InsCigaretteHelper.cs:284；InsStampHelper.cs:192</td></tr>
+<tr><td>開局選擇</td><td>槍匠 +25、模範公民 +30、八面玲瓏 +15</td><td>見左欄 🟢</td><td>只有開局</td><td>—</td><td>NewGameData.cs:266；StartingPerkContent.cs:34–37、50–57</td></tr>
+<tr><td>（不會加聲望）派系行動、賄賂</td><td>治安部的行動只改派系勢力。賄賂沒有聲望變化，但會記一條賄賂罪。🟢</td><td>0</td><td>—</td><td>賄賂價 40～400</td><td>OperationListSec.cs:3–19；StoreClientDialogList.cs:316–327；ContrabandHelper.cs:545</td></tr>
+</tbody></table></div>
+<div class="callout"><b>聲望是負的時候能用哪些：</b>傳輸模組（每晚 +1）、檢舉違禁品客人或通緝犯（聲望要 &gt; −40）、乾淨臨檢（+3）、擊倒 Aug（要有槍）、巡邏警員（一次性）、劇情 NPC 倫警官等。徵用官要 ≥ 0，盈餘商要 ≥ 20，負聲望時都不會來。🟢</div>
+
+<h4>從 −32 開始的步驟</h4>
+<div class="tw"><table><thead><tr><th>目標聲望</th><th>做法</th><th>每次聲望</th><th>預估天數</th><th>備註</th></tr></thead><tbody>
+<tr><td>守住 &gt; −40</td><td>這段時間不加價、不勒索治安部客人，也不亂檢舉</td><td>—</td><td>—</td><td>掉到 −40 後檢舉鈕失效，負聲望最主要的加分管道就斷了 🟢（StoreSecButton.cs:71–74）</td></tr>
+<tr><td>−32 → −19</td><td>①找發明家買傳輸模組，裝上有電的警報器；②有違禁品客人就檢舉；③看到通緝犯就檢舉；④店裡和暗格都清空，等臨檢</td><td>+1／晚；+1～4；+5；+3</td><td>4～8 天 🟡 推論</td><td>只靠模組要 12～13 晚 🟡。只賣贓物的客人不要為了聲望去檢舉（+0，還會扣他所屬的派系）🟢（PlayerStore.cs:3579–3582）</td></tr>
+<tr><td>−19 → 0</td><td>同上；巡邏警員來時打 75% 折，再加上超過預算照賣點心和香菸</td><td>巡邏警員一次約 +5～12 🟡</td><td>7～14 天 🟡 推論</td><td>巡邏警員何時出現沒辦法控制，整局只來 1 次 🟢（StoreClientManager.cs:1562–1563）</td></tr>
+<tr><td>0 → 20</td><td>週三晚上備好食物和醫療用品。週四徵用官來了先放一件，打 75% 折，把貨放到實收快滿 750，最後一件超過預算照賣</td><td>價值 1,600 的貨約 +19.6；價值 3,000 約 +36.75 🟡</td><td>1 個週四 🟡 推論</td><td>到 ≥ 0 後，下一個週四才會來；而且要第 8 天以後 🟢（StoreClientManager.cs:1285）</td></tr>
+<tr><td>20 → 50</td><td>週三向盈餘商「多給 75%」買貨；週四照上面的方法賣給徵用官；模組每週 +7</td><td>每週約 +20～40 🟡</td><td>1～2 週 🟡 推論</td><td>到 20 時，I 級槍證才會在開店時發下來 🟢（StoreShutterButton.cs:197）</td></tr>
+<tr><td>50 → 80</td><td>同上</td><td>每週約 +20～40 🟡</td><td>1～2 週 🟡 推論</td><td>到 40 時夜間竊盜率 −16 🟢（PlayerStore.cs:2094–2097）。到 80 時全部固定預算 +50%，徵用官變 450 🟢（StoreClient.cs:1031–1034）</td></tr>
+</tbody></table></div>
+<p class="sub">🟡 天數假設是 Normal 難度、手上有足夠的食物和醫療用品，而且沒有被扣分事件。讓利的「成本」用貨物的市價計算；自己種或養的貨實際成本更低。</p>
+
+<h4>會扣治安聲望的事（避開）</h4>
+<div class="tw"><table><thead><tr><th>事件</th><th>扣多少</th><th>附帶</th><th>來源</th></tr></thead><tbody>
+<tr><td>錯誤檢舉（客人沒有違法）</td><td>−8 🟢</td><td>現金 ≥ 100 時罰 50；被檢舉者的派系再 −6（客人預設值）🟢</td><td>PlayerStore.cs:3376–3386、3528–3540；StoreClient.cs:200–202</td></tr>
+<tr><td>臨檢查到東西</td><td>每件 −(1 + 違禁等級 + 贓物價值加成 0～4)，最多 −25 🟢</td><td>MID 沒收、HIGH 罰款、CRITICAL 逮捕（有 SEC_GRACE 改成扣分）🟢</td><td>ContrabandHelper.cs:183–197、207–240</td></tr>
+<tr><td>治安官上門開罰單（犯罪 &lt; 300）</td><td>−10 🟢</td><td>罰款；付不出來就被逮捕 🟢</td><td>StoreClientListSecurity.cs:5–7、67–96</td></tr>
+<tr><td>治安官上門時證據已經不見</td><td>−20 🟢</td><td>證據 &lt; 95 或已經沒有犯罪紀錄 🟢</td><td>StoreClientListSecurity.cs:9–21、36–39</td></tr>
+<tr><td>開槍打死無辜客人</td><td>−15 🟢</td><td>下層 −15、黑市／革命軍 −10，另記一條過失殺人罪 🟢</td><td>AugHelper.cs:104–117</td></tr>
+<tr><td>盧的陷阱失敗</td><td>−12（一次）🟢</td><td>—</td><td>LouOperativeHelper.cs:876–882</td></tr>
+<tr><td>勒索者被抓</td><td>−30 🟢</td><td>其他派系也各 −30 🟢</td><td>StoreClientListSpec.cs:924–930</td></tr>
+<tr><td>對治安部客人加價或壓價成功</td><td>這筆交易改成扣分：m 變成負的 0.5～5 🟢</td><td>威脅會讓這筆聲望歸零 🟢</td><td>BargainUIManager.cs:1146–1164、1368–1383</td></tr>
+<tr><td>議價失敗，客人氣走</td><td>−3；勒索失敗 −5；勒索無辜的人 −7 或 −10 🟢</td><td>—</td><td>BargainUIManager.cs:839、923、931–934、1022</td></tr>
+<tr><td>被治安部客人揭穿商品問題</td><td>−4（揭穿）或 −1 🟢</td><td>—</td><td>StoreClient.cs:794–806；NegociationHelper.cs:330–336</td></tr>
+<tr><td>拆穿失敗／彈藥盒被拆</td><td>−2／−5（扣當下客人的派系）🟢</td><td>—</td><td>InspectionUIManager.cs:476–488；AmmoBoxHelper.cs:140–150</td></tr>
+<tr><td>拒絕化學品客訴退款</td><td>最多 −20（扣原買家的派系）🟢</td><td>—</td><td>StoreClientListSpec.cs:1001–1013；ChemicalFeedbackHelper.cs:458</td></tr>
+<tr><td>在治安部客人面前把違禁品或贓物放上櫃台</td><td>會觸發臨檢，照上面的臨檢規則扣分 🟢</td><td>展示櫃引起的臨檢就算乾淨也不會 +3 🟢</td><td>StoreClient.cs:1093–1108；StoreClientDialogList.cs:286、302</td></tr>
+<tr><td>開局選擇</td><td>Fence −30、化學家 −15、前科犯 −30、全民公敵 −15 🟢</td><td>前科犯的檢舉聲望和賞金也 ×0.75 🟢</td><td>NewGameData.cs:186、295；StartingPerkContent.cs:30–33、58–64、446–453</td></tr>
+</tbody></table></div>
 <h3>Q5. 怎麼賺錢？各路線每晚比較</h3>
 <div class="tw"><table><thead><tr><th>路線</th><th>每台每晚</th><th>主要限制</th></tr></thead><tbody>
 <tr><td>買基礎水（Basewater）淨化成 HQ（見 Q6）</td><td>≈183</td><td>供應商貨量、買家預算</td></tr>
